@@ -7,5 +7,6 @@ def main(input=input):
     backend.starting_positions(light_coordinates, dark_coordinates, SIZE)
     frontend.draw(SIZE, light_coordinates, dark_coordinates)
 
+
 if __name__ == '__main__':
     main()

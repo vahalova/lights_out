@@ -9,14 +9,17 @@ SQUARE_SIZE = 64
 def input_size(input=input):
     SIZE = int(input('The width of the playing area (between 2 and 30): '))
     while not is_valid_size(SIZE):
-        print('the size must be between 2 and 30')
-        SIZE = int(input('The width of the playing area: '))
+        print('The size must be between 2 and 30')
+        SIZE = int(input('The width of the playing area (between 2 and 30): '))
     return SIZE
 
 def is_valid_size(SIZE):
     if SIZE > 1 and SIZE <= 30:
         return True
 
+def check_win(dark_coordinates):
+    if len(dark_coordinates) == 0:
+        print('You won!!')
 
 def draw(SIZE, light_coordinates, dark_coordinates):
     window = pyglet.window.Window(SIZE*SQUARE_SIZE, SIZE*SQUARE_SIZE)
@@ -25,7 +28,8 @@ def draw(SIZE, light_coordinates, dark_coordinates):
         coordinate_x = x//SQUARE_SIZE
         coordinate_y = y//SQUARE_SIZE
         click_coordinate = (coordinate_x, coordinate_y)
-        backend.change(click_coordinate, light_coordinates, dark_coordinates, SIZE)
+        backend.cross_switch(click_coordinate, light_coordinates, dark_coordinates, SIZE)
+        check_win(dark_coordinates)
 
     def draw_imgs():
         window.clear()
@@ -40,4 +44,5 @@ def draw(SIZE, light_coordinates, dark_coordinates):
             square = pyglet.sprite.Sprite(img, x=coordinate[0] * SQUARE_SIZE, y=coordinate[1] * SQUARE_SIZE)
             square.draw()
     window.push_handlers(on_draw = draw_imgs, on_mouse_press=click)
+
     pyglet.app.run()
