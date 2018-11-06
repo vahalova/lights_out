@@ -20,6 +20,8 @@ def is_valid_size(SIZE):
 def check_win(dark_coordinates):
     if len(dark_coordinates) == 0:
         print('You won!!')
+        return True
+    return False
 
 def draw(SIZE, light_coordinates, dark_coordinates):
     window = pyglet.window.Window(SIZE*SQUARE_SIZE, SIZE*SQUARE_SIZE)

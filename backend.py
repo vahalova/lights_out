@@ -12,7 +12,7 @@ def coordinates(SIZE):
 def starting_positions(light_coordinates, dark_coordinates, SIZE):
     # print('light_coordinates',light_coordinates)
     starting_list = []
-    while len(starting_list) == 0:
+    while len(starting_list) <= 3:
         for coordinate in light_coordinates:
             for _ in range(random.randrange(6)):
                     starting_list.append(coordinate)
