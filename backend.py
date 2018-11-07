@@ -40,5 +40,5 @@ def cross_switch(click_coordinate, light_coordinates, dark_coordinates, SIZE):
         else:
             light_coordinates.append(coordinate)
             dark_coordinates.remove(coordinate)
-
+    return light_coordinates, dark_coordinates
     # print('light_coordinates, dark_coordinates', light_coordinates, dark_coordinates)

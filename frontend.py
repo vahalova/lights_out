@@ -6,7 +6,7 @@ light = 'ground.png'
 dark = 'hole.png'
 SQUARE_SIZE = 64
 
-def input_size(input=input):
+def input_size():
     SIZE = int(input('The width of the playing area (between 2 and 30): '))
     while not is_valid_size(SIZE):
         print('The size must be between 2 and 30')
