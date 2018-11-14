@@ -16,19 +16,25 @@ DARK = 135
 
 light_coordinates, dark_coordinates, SIZE = backend.coordinates(SIZE)
 def coordinate_dict(light_coordinates):
-    coordinate_dict = {}
+    coordinate_dict_list = {}
     for i in range(16):
-        coordinate_dict[light_coordinates[i]] = i
-    print(coordinate_dict)
+        coordinate_dict_list[light_coordinates[i]] = i
+    return coordinate_dict_list
+coordinate_dict_list = coordinate_dict(light_coordinates)
+backend.starting_positions(light_coordinates, dark_coordinates, SIZE)
 
-def motor(SIZE, light_coordinates, dark_coordinates):
+
+def motor(coordinate_dict_list,light_coordinates, dark_coordinates):
     for coordinate in light_coordinates:
-        motor_number = coordinate_dict['coordinate']
+        motor_number = coordinate_dict_list[coordinate]
         servos.position(motor_number, LIGHT)
         sleep(0.4)
-        servos.release(i)
+        servos.release(motor_number)
     for coordinate in dark_coordinates:
-        motor_number = coordinate_dict['coordinate']
+        motor_number = coordinate_dict_list[coordinate]
         servos.position(motor_number, DARK)
         sleep(0.4)
-        servos.release(i)
+        servos.release(motor_number)
+
+
+motor(coordinate_dict_list, light_coordinates, dark_coordinates)
