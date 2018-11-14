@@ -1,4 +1,5 @@
-import random
+from os import urandom
+
 
 def coordinates(SIZE):
     light_coordinates = []
@@ -14,9 +15,16 @@ def starting_positions(light_coordinates, dark_coordinates, SIZE):
     starting_list = []
     while len(starting_list) <= 3:
         for coordinate in light_coordinates:
-            for _ in range(random.randrange(6)):
+            for _ in range(urandom(1)[0] % 5):
                     starting_list.append(coordinate)
-    random.shuffle(starting_list)
+    n = len(starting_list)
+    shuffle_list = []
+    for r in urandom(n):
+        chosen = starting_list[r%n]
+        del starting_list[r%n]
+        shuffle_list.append(chosen)
+        n -= 1
+    starting_list.extend(shuffle_list)
     # print('starting_list', starting_list)
     for click_coordinate in starting_list:
         # print('click_coordinate',click_coordinate )
