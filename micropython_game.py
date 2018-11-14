@@ -28,13 +28,13 @@ def motor(coordinate_dict_list,light_coordinates, dark_coordinates):
     for coordinate in light_coordinates:
         motor_number = coordinate_dict_list[coordinate]
         servos.position(motor_number, LIGHT)
-        sleep(0.4)
-        servos.release(motor_number)
+        sleep(0.1)
     for coordinate in dark_coordinates:
         motor_number = coordinate_dict_list[coordinate]
         servos.position(motor_number, DARK)
-        sleep(0.4)
-        servos.release(motor_number)
+        sleep(0.1)
+    sleep(0.3)
+    for motorek in range(16):
 
-
+        servos.release(motorek)
 motor(coordinate_dict_list, light_coordinates, dark_coordinates)
