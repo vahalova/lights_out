@@ -7,11 +7,9 @@ def coordinates(SIZE):
     for y in range(SIZE):
         for x in range(SIZE):
             light_coordinates.append((x,y))
-    # print(light_coordinates)
     return light_coordinates, dark_coordinates, SIZE
 
 def starting_positions(light_coordinates, dark_coordinates, SIZE):
-    # print('light_coordinates',light_coordinates)
     starting_list = []
     while len(starting_list) <= 3:
         for coordinate in light_coordinates:
@@ -25,9 +23,7 @@ def starting_positions(light_coordinates, dark_coordinates, SIZE):
         shuffle_list.append(chosen)
         n -= 1
     starting_list.extend(shuffle_list)
-    # print('starting_list', starting_list)
     for click_coordinate in starting_list:
-        # print('click_coordinate',click_coordinate )
         cross_switch(click_coordinate, light_coordinates, dark_coordinates, SIZE)
 
 def cross_switch(click_coordinate, light_coordinates, dark_coordinates, SIZE):
@@ -49,4 +45,3 @@ def cross_switch(click_coordinate, light_coordinates, dark_coordinates, SIZE):
             light_coordinates.append(coordinate)
             dark_coordinates.remove(coordinate)
     return light_coordinates, dark_coordinates
-    # print('light_coordinates, dark_coordinates', light_coordinates, dark_coordinates)
